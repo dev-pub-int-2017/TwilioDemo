@@ -1,7 +1,9 @@
 var twilio_vars = require('../vars/twilio.js');
 var twilio = require('twilio') (twilio_vars.credentials.account_sid, twilio_vars.credentials.auth_token);
+
 var pdfkit = require('pdfkit');
 var fs = require('fs');
+var path = require('path');
 
 function convertTextToPDF(phone_number, text) {
 	// if user chose fax, we have to convert the text to a PDF first!
@@ -9,7 +11,8 @@ function convertTextToPDF(phone_number, text) {
 	pdf.text(text);
 
 	// generate a filename to return
-	var pdf_path = "../tmp/text_to_pdf_" + phone_number + ".pdf";
+	var pdf_path = path.join(__dirname, "/tmp/", "text_to_pdf_" + phone_number + ".pdf");
+	console.info(pdf_path);
 
 	// save it to disk
 	pdf.pipe(fs.createWriteStream(pdf_path));
