@@ -25,32 +25,21 @@ app.get('/', function(req, res) {
 	res.render("index.html");
 });
 
-app.post('/send_sms_or_fax', function(req, res) {
-	console.log(req.body);
-
-	// what is the destination phone number?
-	var phone_number = req.body;
-
-	// what is the text submitted?
-	var text = req.body;
-
-	// did user choose to send a fax or an SMS?
-	var choice = req.body;
-	
+app.post('/send_sms_or_fax', function(req, res) {	
 	// run our function!
 	var succeeded = false;
 	
-	if(choice == "sms") {
-		succeeded = twilio_sms.send_sms(phone_number, text);
+	if(req.body.choice == "sms") {
+		succeeded = twilio_sms.sendSMS(req.body.phone_number, req.body.text);
 	} else if(choice == "fax") {
-		succeeded = twilio_fax.send_fax(phone_number, text);
+		succeeded = twilio_fax.sendFax(req.body.phone_number, req.body.text);
 	}
 
 	// notify user of result
 	var confirmation_data = {
-		phone_number : phone_number,
-		text : text,
-		choice : choice,
+		phone_number : req.body.phone_number,
+		text : req.body.text,
+		choice : req.body.choice,
 		status : succeeded
 	};
 

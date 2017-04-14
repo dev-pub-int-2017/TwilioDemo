@@ -19,6 +19,8 @@ function convertTextToPDF(phone_number, text) {
 };
 
 module.exports.sendFax = function(phone_number, text) {
+	console.log("Preparing to send an SMS...");
+	
 	var fax = twilio.faxes.create({
 		to : phone_number,
 		from : twilio_vars.numbers.harlo,
