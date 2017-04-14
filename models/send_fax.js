@@ -22,7 +22,7 @@ module.exports.sendFax = function(phone_number, text) {
 	var fax = twilio.faxes.create({
 		to : phone_number,
 		from : twilio_vars.numbers.harlo,
-		mediaUrl : convertTextToPDF(phone_number, text);
+		mediaUrl : convertTextToPDF(phone_number, text)
 	}, function(err, fax) {
 		console.log(fax);
 		console.error("Sorry, Twilio didn't send the fax.");

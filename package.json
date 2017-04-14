@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/dev-pub-int-2017/TwilioDemo#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "mustache-express": "^1.2.4",
+    "pdfkit": "^0.8.0",
     "twilio": "^2.11.1"
   }
 }
