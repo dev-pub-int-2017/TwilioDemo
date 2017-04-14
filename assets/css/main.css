@@ -2,7 +2,12 @@ body {
 	font-family: arial;
 }
 
-.td_textarea {
-	background-color: #aaaaaa;
+.td_input_text {
+	background-color: #dddddd;
 	border: 2px solid #000000;
+	width: 50%;
+}
+
+.td_textarea {
+	height: 10em;
 }

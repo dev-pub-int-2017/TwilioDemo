@@ -10,6 +10,12 @@ app.set('views', __dirname + '/views');
 
 app.use('/assets', express.static('assets'));
 
+// since we're using form input, express needs body-parser
+var body_parser = require('body-parser');
+app.use(body_parser.urlencoded({
+	extended : true
+}));
+
 // pull in our twilio stuff
 var twilio_sms = require('./models/send_sms.js');
 var twilio_fax = require('./models/send_fax.js');

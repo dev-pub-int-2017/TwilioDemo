@@ -10,11 +10,11 @@
 
 		<h2>Send an SMS message or a Fax</h2>
 
-		<form action "/send_sms_or_fax" method="post">
-			<p>To: <input type="text" name="phone_number" /></p>
+		<form action="/send_sms_or_fax" method="post">
+			<p>To: <input type="text" class="td_input_text" name="phone_number" /></p>
 			
 			<p>Message:</p>
-			<input type="text" class="td_textarea" name="text" />
+			<input type="text" class="td_textarea td_input_text" name="text" />
 			
 			<p>Select SMS or Fax:<br />
 				<input type="radio" value="sms" name="choice" /> send as SMS!
