@@ -9,7 +9,7 @@ function convertTextToPDF(phone_number, text) {
 	pdf.text(text);
 
 	// generate a filename to return
-	var pdf_path = "text_to_pdf_" + phone_number + ".pdf";
+	var pdf_path = "../tmp/text_to_pdf_" + phone_number + ".pdf";
 
 	// save it to disk
 	pdf.pipe(fs.createWriteStream(pdf_path));
@@ -21,6 +21,10 @@ function convertTextToPDF(phone_number, text) {
 module.exports.sendFax = function(phone_number, text) {
 	console.log("Preparing to send a fax...");
 
+	// quick pdf kit test:
+	convertTextToPDF(phone_number, text);
+
+	/*
 	twilio.faxes.create({
 		to : phone_number,
 		from : twilio_vars.numbers.harlo,
@@ -31,6 +35,9 @@ module.exports.sendFax = function(phone_number, text) {
 			console.error(err);
 		}
 
+		// delete from disk!
+
 		console.log(fax);
 	});
+	*/
 };
