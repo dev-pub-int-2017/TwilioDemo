@@ -19,19 +19,18 @@ function convertTextToPDF(phone_number, text) {
 };
 
 module.exports.sendFax = function(phone_number, text) {
-	console.log("Preparing to send an SMS...");
+	console.log("Preparing to send a fax...");
 
-	var fax = twilio.faxes.create({
+	twilio.faxes.create({
 		to : phone_number,
 		from : twilio_vars.numbers.harlo,
 		mediaUrl : convertTextToPDF(phone_number, text)
 	}, function(err, fax) {
-		console.log(err);
-		console.log(fax);
-		//console.error("Sorry, Twilio didn't send the fax.");
-	});
+		if(err != null) {
+			console.error("Sorry, Twilio didn't send the fax");
+			console.error(err);
+		}
 
-	console.log("FAX OBJ:");
-	console.log(fax);
-	console.log("xxx");
+		console.log(fax);
+	});
 };
