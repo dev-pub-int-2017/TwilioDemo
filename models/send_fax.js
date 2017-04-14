@@ -10,9 +10,14 @@ function convertTextToPDF(phone_number, text) {
 	var pdf = new pdfkit();
 	pdf.text(text);
 
+	// does our tmp dir exist yet? might have to create it...
+	var pdf_path = path.join(__dirname, "/tmp/");
+	if(!fs.existsSync(pdf_path)) {
+		fs.mkdirSync(pdf_path);
+	}
+
 	// generate a filename to return
-	var pdf_path = path.join(__dirname, "/tmp/", "text_to_pdf_" + phone_number + ".pdf");
-	console.info(pdf_path);
+	pdf_path = path.join(pdf_path, "text_to_pdf_" + phone_number + ".pdf");
 
 	// save it to disk
 	pdf.pipe(fs.createWriteStream(pdf_path));
@@ -24,10 +29,6 @@ function convertTextToPDF(phone_number, text) {
 module.exports.sendFax = function(phone_number, text) {
 	console.log("Preparing to send a fax...");
 
-	// quick pdf kit test:
-	convertTextToPDF(phone_number, text);
-
-	/*
 	twilio.faxes.create({
 		to : phone_number,
 		from : twilio_vars.numbers.harlo,
@@ -38,9 +39,7 @@ module.exports.sendFax = function(phone_number, text) {
 			console.error(err);
 		}
 
-		// delete from disk!
-
+		// TODO: delete from disk!
 		console.log(fax);
 	});
-	*/
 };
