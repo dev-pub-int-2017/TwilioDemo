@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Twilio Demo</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+	</head>
+
+	<body>
+		<h1>Let's Use Twilio!</h1>
+
+		<h2>Send an SMS message or a Fax</h2>
+
+		<form action "/send_sms_or_fax" method="post">
+			<p>To: <input type="text" name="phone_number" /></p>
+			
+			<p>Message:</p>
+			<input type="text" class="td_textarea" name="text" />
+			
+			<p>Select SMS or Fax:<br />
+				<input type="radio" value="sms" name="choice" /> send as SMS!
+				<br />
+				<input type="radio" value="fax" name="choice" /> send as Fax!
+			</p>
+			
+			<input type="submit" value="send!" />
+		</form>
+		
+	</body>
+</html>
