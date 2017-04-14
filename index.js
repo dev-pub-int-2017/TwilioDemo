@@ -29,7 +29,7 @@ app.post('/send_sms_or_fax', function(req, res) {
 	// run our function!	
 	if(req.body.choice == "sms") {
 		twilio_sms.sendSMS(req.body.phone_number, req.body.text);
-	} else if(choice == "fax") {
+	} else if(req.body.choice == "fax") {
 		twilio_fax.sendFax(req.body.phone_number, req.body.text);
 	}
 
