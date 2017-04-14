@@ -9,10 +9,12 @@ module.exports.sendSMS = function(phone_number, text) {
 		from : twilio_vars.numbers.harlo,
 		body : text
 	}, function(err, message) {
+		console.log(err);
 		console.log(message);
-		console.error("Sorry, Twilio didn't send the SMS");
+		//console.error("Sorry, Twilio didn't send the SMS");
 	});
 
+	console.log("SMS OBJ:");
 	console.log(sms);
-	return false;
+	console.log("xxx");
 };
